@@ -19,10 +19,16 @@
     },
     "cordova": {
         "plugins": {
-            "cordova-plugin-whitelist": {}
+            "cordova-plugin-whitelist": {},
+            "cordova-hot-code-push-plugin": {},
+            "cordova-hot-code-push-local-dev-addon": {}
         },
         "platforms": [
             "android"
         ]
+    },
+    "dependencies": {
+        "cordova-hot-code-push-local-dev-addon": "file:../../cordova-hot-code-push-local-dev-addon",
+        "cordova-hot-code-push-plugin": "file:../../cordova-hot-code-push"
     }
 }
