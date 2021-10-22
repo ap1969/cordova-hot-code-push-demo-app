@@ -22,4 +22,7 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <chcp>
+    <config-file url="https://1cdb-82-28-36-122.ngrok.io/chcp.json"/>
+    </chcp>
 </widget>

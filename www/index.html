@@ -11,10 +11,10 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta
+        <!-- meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"
-        />
+            content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; script-src 'nonce-4AEemGb0xJptoIGFP3Nd'"
+        /-->
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta
@@ -31,10 +31,88 @@
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
-                <p>Version 1.0</p>
+                <p>Version 1.0.2</p>
+                <button id="myFetchBtn">Check for updates</button>
             </div>
         </div>
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
+        <script nonce="4AEemGb0xJptoIGFP3Nd">
+            var app = {
+                // Application Constructor
+                initialize: function () {
+                    this.bindEvents();
+                },
+
+                // Bind any events that are required.
+                // Usually you should subscribe on 'deviceready' event to know, when you can start calling cordova modules
+                bindEvents: function () {
+                    document.addEventListener(
+                        'deviceready',
+                        this.onDeviceReady,
+                        false
+                    );
+
+                    document.addEventListener(
+                        'chcp_updateIsReadyToInstall',
+                        this.onUpdateReady,
+                        false
+                    );
+                },
+
+                // deviceready Event Handler
+                onDeviceReady: function () {
+                    console.log('Device is ready for work');
+                    document
+                        .getElementById('myFetchBtn')
+                        .addEventListener('click', app.checkForUpdate);
+
+                    console.log('CHCP', window.chcp);
+                    window.chcp.getVersionInfo(callback);
+
+                    function callback(err, data) {
+                        console.log(
+                            'Current web version: ' + data.currentWebVersion
+                        );
+                        console.log(
+                            'Previous web version: ' + data.previousWebVersion
+                        );
+                        console.log(
+                            'Loaded and ready for installation web version: ' +
+                                data.readyToInstallWebVersion
+                        );
+                        console.log(
+                            'Application version name: ' + data.appVersion
+                        );
+                        console.log(
+                            'Application build version: ' + data.buildVersion
+                        );
+                    }
+                },
+
+                checkForUpdate: function () {
+                    chcp.fetchUpdate(app.fetchUpdateCallback);
+                },
+
+                fetchUpdateCallback: function (error, data) {
+                    if (error) {
+                        console.log(
+                            'Failed to load the update with error code: ' +
+                                error.code
+                        );
+                        console.log(error.description);
+                    } else {
+                        console.log('Update is loaded');
+                    }
+                },
+
+                // chcp_updateIsReadyToInstall Event Handler
+                onUpdateReady: function () {
+                    console.log('Update is ready for installation');
+                },
+            };
+
+            app.initialize();
+        </script>
     </body>
 </html>

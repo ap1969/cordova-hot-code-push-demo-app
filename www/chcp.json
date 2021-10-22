@@ -5,7 +5,7 @@
   "s3region": "us-east-1",
   "ios_identifier": "",
   "android_identifier": "",
-  "update": "now",
+  "update": "resume",
   "content_url": "https://s3.amazonaws.com/cordova-hot-code-push-demo/",
-  "release": "2021.10.22-18.29.45"
+  "release": "2021.10.23-00.32.37"
 }
