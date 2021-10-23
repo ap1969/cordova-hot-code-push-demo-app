@@ -6,6 +6,6 @@
   "ios_identifier": "",
   "android_identifier": "",
   "update": "resume",
-  "content_url": "https://s3.amazonaws.com/cordova-hot-code-push-demo/",
-  "release": "2021.10.23-00.32.37"
+  "content_url": "https://cordovahcp.loophole.site",
+  "release": "2021.10.24-00.08.19"
 }
