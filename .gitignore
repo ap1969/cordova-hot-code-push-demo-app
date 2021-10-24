@@ -12,3 +12,7 @@ s3sync/
 .chcplogin
 
 .chcpenv
+
+debug.keystore
+
+demo.keystore.jks
