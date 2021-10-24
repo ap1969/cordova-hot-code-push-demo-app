@@ -1,11 +1,11 @@
 {
-    "name": "test",
-    "s3bucket": "cordova-hot-code-push-demo",
-    "s3prefix": "",
-    "s3region": "us-east-1",
-    "ios_identifier": "",
-    "android_identifier": "",
-    "update": "resume",
-    "content_url": "https://https://s3.amazonaws.com/cordova-hot-code-push-demo/",
-    "release": "2021.10.24-19.52.17"
+  "name": "test",
+  "s3bucket": "cordova-hot-code-push-demo",
+  "s3prefix": "",
+  "s3region": "us-east-1",
+  "ios_identifier": "",
+  "android_identifier": "",
+  "update": "resume",
+  "content_url": "https://s3.amazonaws.com/cordova-hot-code-push-demo",
+  "release": "2021.10.25-00.12.21"
 }

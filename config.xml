@@ -23,6 +23,6 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <chcp>
-    <config-file url="https://cordovahcp.loophole.site/chcp.json"/>
+    <config-file url="https://s3.amazonaws.com/cordova-hot-code-push-demo/chcp.json"/>
     </chcp>
 </widget>
