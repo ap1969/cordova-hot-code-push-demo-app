@@ -31,13 +31,21 @@
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
-                <p>Version 1.0.6</p>
+                <p>Version 1.0.12</p>
                 <button id="myFetchBtn">Check for updates</button>
+                <div id="results"></div>
             </div>
         </div>
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
         <script nonce="4AEemGb0xJptoIGFP3Nd">
+            function addToLog(msg) {
+                document.getElementById('results').innerHTML =
+                    document.getElementById('results').innerHTML +
+                    '<div>' +
+                    msg +
+                    '</div>';
+            }
             var app = {
                 // Application Constructor
                 initialize: function () {
@@ -87,6 +95,19 @@
                         console.log(
                             'Application build version: ' + data.buildVersion
                         );
+
+                        addToLog(
+                            `Current web version: ${data.currentWebVersion}`
+                        );
+                        addToLog(
+                            `Previous web version: ${data.previousWebVersion}`
+                        );
+                        addToLog(
+                            `Application version name: ${data.appVersion}`
+                        );
+                        addToLog(
+                            `Application build version: ${data.buildVersion}`
+                        );
                     }
                 },
 
@@ -100,15 +121,17 @@
                             'Failed to load the update with error code: ' +
                                 error.code
                         );
+                        addToLog(`Fetch: ${error.description}`);
                         console.log(error.description);
                     } else {
+                        addToLog(`Fetch successful`);
                         console.log('Update is loaded');
                     }
                 },
 
                 // chcp_updateIsReadyToInstall Event Handler
                 onUpdateReady: function () {
-                    console.log('Update is ready for installation');
+                    addToLog(`Update ready for installation`);
                 },
             };
 
